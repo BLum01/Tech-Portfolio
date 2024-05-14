@@ -25,6 +25,10 @@ public class CountryClient {
 		ArrayList<Country> country = new ArrayList<>();
 		for (int i = 0; input.hasNextLine(); i++) {
 			String line = input.nextLine();
+			/* using mutliple split methods to extract data
+    			 * it analyzes a line of data, and extracts the name of the country and the data
+			 * this shows my skill with proccessing csv files
+			 */
 			if ((line.split("\"", -1).length-1) > 0) {
 				String[] temp = line.split("\"");
 				String name = temp[1];
@@ -46,7 +50,8 @@ public class CountryClient {
 		}
 		input.close();
 	}
-	
+
+	//removes the country with the paramater being the name of the country
 	public static void removeByName(ArrayList<Country> countries, String name) {
 		for (int i = 0; i < countries.size(); i++) {
 			if(countries.get(i).getCountry().equals(name)) {
@@ -54,7 +59,8 @@ public class CountryClient {
 			}
 		}
 	}
-	
+
+	//removes all countries in the Arraylist that have no data trend
 	public static void removeNoTrend(ArrayList<Country> countries) {
 		for (int i = 0; i<countries.size(); i++) {
 			if(countries.get(i).getTrend().equals("no trend")) {
@@ -63,10 +69,17 @@ public class CountryClient {
 			}
 		}
 	}
-	
+
+	//returns an ArrayList with only the countries that have the specified trend type
 	public static ArrayList<String> getListBasedOnTrend(ArrayList<Country> countries, String trendType){
+		/* check if the specified trend type is valid
+  		 * I used a if else statement instead of a single if statmenet and //! because it made the code easier to read
+		 */
 		if(trendType.equals("up") || trendType.equals("down") || trendType.equals("no trend")) {	
 		} else 
+			/* throws exception if invalid trend type
+   			 * shows how I know how to throw exceptions
+			 */
 			throw new IllegalArgumentException("Invalid trend type");
 		
 		ArrayList<String> trend = new ArrayList<>();
