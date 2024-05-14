@@ -51,8 +51,11 @@ public class Country {
 		return " for " + years.get(0) + "-" + years.get(years.size()-1);
 	}
 	
-	//get trend
+	//returns the trend of the data
 	public String getTrend() {
+		/* used private methods to make code more readable
+  		 * shows how I'm organized as a programmer and I put a lot of thought into my implementations
+		*/
 		if (trendsUp() == true) {
 			return "up";
 		}else if(trendsDown() == true) {
@@ -106,6 +109,7 @@ public class Country {
 		return largest;
 	}
 	
+	//private method to be caled in getTrend()
 	private boolean trendsUp() {
 		for (int i = 0; i<data.size()-1; i++) {
 			if (data.get(i)>=data.get(i+1)) {
@@ -114,6 +118,8 @@ public class Country {
 		}
 		return true;
 	}
+
+	//private method to be caled in getTrend()
 	private boolean trendsDown() {
 		for (int i = 0; i<data.size()-1; i++) {
 			if(data.get(i)<=data.get(i+1)) {
