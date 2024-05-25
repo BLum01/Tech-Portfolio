@@ -25,7 +25,7 @@ Narrative for Country Data Project
 		return true;
 	}
 
-	//private method to be caled in getTrend()
+	//private method to be called in getTrend()
 	private boolean trendsDown() {
 		for (int i = 0; i<data.size()-1; i++) {
 			if(data.get(i)<=data.get(i+1)) {
@@ -42,7 +42,9 @@ Why are they significant? This shows my ability to recognize repetetive code and
 	complicated, easier to read and less taxing on the machine running the code.
 
 When/Where/Why do you make them? The private methods are in Country.java, they are used in the getTrend() method, and I made them
-	to make the code less complicated, easier to read and less taxing on the machine running the code.
+	to make the code less complicated, easier to read and less taxing on the machine running the code. The getTrend() method return
+	the trend of the data and the trendsUp() method tests if the data trends up and the trendsDown() method tests if the data 
+	trends down.
 
 2. Excerpt from CountryClient.java
 
