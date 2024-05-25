@@ -1,0 +1,112 @@
+Narrative for Country Data Project
+
+1. Excerpt from Country.java
+
+	//returns the trend of the data
+	public String getTrend() {
+		/* used private methods to make code more readable
+  		 * shows how I'm organized as a programmer and I put a lot of thought into my implementations
+		*/
+		if (trendsUp() == true) {
+			return "up";
+		}else if(trendsDown() == true) {
+			return "down";
+		} else
+			return "no trend";
+	}
+
+	//private method to be caled in getTrend()
+	private boolean trendsUp() {
+		for (int i = 0; i<data.size()-1; i++) {
+			if (data.get(i)>=data.get(i+1)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	//private method to be caled in getTrend()
+	private boolean trendsDown() {
+		for (int i = 0; i<data.size()-1; i++) {
+			if(data.get(i)<=data.get(i+1)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+Narrative:
+What are they? This is an example of private methods being used.
+
+Why are they significant? This shows my ability to recognize repetetive code and implementing private methods to make the code less 
+	complicated, easier to read and less taxing on the machine running the code.
+
+When/Where/Why do you make them? The private methods are in Country.java, they are used in the getTrend() method, and I made them
+	to make the code less complicated, easier to read and less taxing on the machine running the code.
+
+2. Excerpt from CountryClient.java
+
+	for (int i = 0; input.hasNextLine(); i++) {
+			String line = input.nextLine();
+			/* using mutliple split methods to extract data
+    			 * it analyzes a line of data, and extracts the name of the country and the data
+			 * this shows my skill with proccessing csv files
+			 */
+			if ((line.split("\"", -1).length-1) > 0) {
+				String[] temp = line.split("\"");
+				String name = temp[1];
+				String[] temp1 = name.split(",");
+				line = (temp1[1] + " " + temp1[0] + temp[2]).substring(1);
+			}
+			String[] line1 = line.split(",");
+			String countryName = line1[0];
+			ArrayList<Double> data = new ArrayList<>();
+			for (int j = 1; j < line1.length; j++) {
+				data.add(Double.parseDouble(line1[j]));
+			}
+			Country name = new Country(countryName, seriesName, yearInt, data);
+			country.add(i,name);
+		}
+		System.out.println(country.get(0).getAcronym() + country.get(0).getYearsRange());
+		for (Country temp: country) {
+			System.out.println(temp.toString());	
+		}
+
+Narrative:
+What are they? This is an example of using the split() method to parse csv files and naming convention.
+
+Why are they significant? This shows my ability to parse csv files and implement the split() method effectively and name variables accordingly.
+
+When, Where, Why do you make them? The split() method is used in CountryClient.java's main method. I used them to parse a CSV file.
+
+3. Excerpt from CountryClient.java
+
+	//returns an ArrayList with only the countries that have the specified trend type
+	public static ArrayList<String> getListBasedOnTrend(ArrayList<Country> countries, String trendType){
+		/* check if the specified trend type is valid
+  		 * I used a if else statement instead of a single if statmenet and //! because it made the code easier to read
+		 */
+		if(trendType.equals("up") || trendType.equals("down") || trendType.equals("no trend")) {	
+		} else 
+			/* throws exception if invalid trend type
+   			 * shows how I know how to throw exceptions
+			 */
+			throw new IllegalArgumentException("Invalid trend type");
+		
+		ArrayList<String> trend = new ArrayList<>();
+		for (Country C : countries) {
+			if(C.getTrend().equals(trendType)) {
+				trend.add(C.getCountry());
+			}
+		}
+		return trend;
+	}
+
+Narrative:
+What are they? They are used if else statements and throwing exceptions.
+
+Why are they significant? It shows my ability to throw exceptions for parameters that are unwated, one reason being they might break the code. 
+	This shows my ability to recognize different test cases and write my code to accomodate them.
+
+When/Where/Why do you make them? They are in CountryClient.java's getListBasedonTrend() method. I used the throw new illegal arguement exception to throw an exception
+	for a parameter that might break my code.
