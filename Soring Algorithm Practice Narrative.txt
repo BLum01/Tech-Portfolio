@@ -1,0 +1,89 @@
+Narratives:
+
+1. Excerpt from Algorithms.java
+	public static void main(String[]args) {
+
+		/* lines 13 to 22 test the sorting implementation chosen by creating a array with a random size, filling it with random numbers, and printing the unsorted and sorted array
+  		 * shows how I know how to create arrays and use Math.random()
+		 */
+		int arrSize = (int)(100*Math.random()+1);
+		int[] arr = new int[arrSize];
+		
+		for (int i = 0; i<arr.length; i++) {
+			arr[i] = (int)(100* Math.random()+1);
+		}
+		System.out.println("Unsorted Array:");
+		System.out.println(Arrays.toString(arr));
+		System.out.println("Sorted Array:");
+		System.out.println(Arrays.toString(selectionSort(arr)));
+
+	}
+
+Narrative:
+What are they? They are examples of implementing arrays and the Math.random() method
+
+Why are they Significant? They show my coding skills with profficiency with arrays and the Math.random() method.
+
+When, Where, Why do you make them? They are in the main method of Algorithms.java. I made them so that I would be able to create an array of random size, fill it
+	with random integers, and test different sorting methods on the array.
+	
+
+2. Excerpt from Algorithms.java
+	//insertion sorting method
+	public static int[] insertion(int[] array) {
+		for (int i = 0; i < array.length-1; i++){
+			int h = i;
+			/* I used a while loop here because I did not need to create another variable
+   			 * This shows my ability to implement different loops
+   			 */
+			while (h>=0 && array[h+1] < array[h] ) {
+				int temp = array[h+1];
+				array[h+1] = array[h];
+				array[h] = temp;
+				h--;
+
+				}
+			}
+		
+		return array;
+	}
+
+Narrative:
+What are they? They are examples of implementing for loops and while loops.
+
+Why are they Significant? They show my coding skills with profficiency working with iteration statements such as for loops and while loops.
+
+When, Where, Why do you make them? They are in the insertion(int[] array) method of Algorithms.java. I made them so that I would be able to 
+	sort and reorder an array in ascending order with the insertion method.
+
+3. Excerpt from Algorithms.java
+	/* bubble sort sorting method
+ 	 * shows my ability to write recursive code
+	 */
+	public static int[] bubbleSort(int[] arr) {
+		for (int i = 0; i < arr.length-1; i++) {
+			if (arr[i] > arr[i+1]) {
+				int temp = arr[i];
+				arr[i] = arr[i+1];
+				arr[i+1] = temp;
+			}
+		}
+		/* I used a private method because this code would be called multiple times, meaning that it
+  		 * would use a lot of memory if it was written in this method. It also makes the code easier to read.
+		 */
+		if(isSorted(arr)) {
+			return arr;
+		} else {
+			bubbleSort(arr);
+		}
+		return arr;
+	}
+
+Narrative:
+What are they? They are examples of implementing recursion.
+
+Why are they Significant? They show my coding skills with profficiency working with recursion.
+
+When, Where, Why do you make them? They are in the bubbleSort(int[] arr) method of Algorithms.java. I made them so that I would be able to 
+	sort and reorder an array in ascending order with the bubble method. The bubbleSort(int[] arr) method will continue to call itself
+	until the array is sorted. I used a private method isSorted(int[]arr) to check if the array is sorted.
